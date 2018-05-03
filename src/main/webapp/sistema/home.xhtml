@@ -1,17 +1,35 @@
-<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<h:head>
+	<title><h:outputText value="#{msg.tituloPagina}" /></title>
+</h:head>
+
+<body>
+	<h3>
+		<h:outputText value="#{msg.cabecalhoHome}" />
+	</h3>
  
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-				xmlns:h="http://xmlns.jcp.org/jsf/html"
-				xmlns:f="http://xmlns.jcp.org/jsf/core" 
-				xmlns:p="http://primefaces.org/ui">
+ 	<h:form id="form">
  
  	<p:menubar>
-		<p:menuitem value="Home" icon="ui-icon-home" url="home.xhtml" />
-		<p:menuitem value="Usuario" icon="ui-icon-home" url="usuario.xhtml" />
-		<p:menuitem value="Produto" icon="ui-icon-home" url="produto.xhtml" />
-		<p:menuitem value="Pedido" icon="ui-icon-home" url="pedido.xhtml" />
+ 		<p:menuitem value="#{msg.menuLogin}" icon="ui-icon-home" url="/index.xhtml" />
+		<p:menuitem value="#{msg.menuUsuario}" icon="ui-icon-contact" url="usuario.xhtml" />
+		<p:menuitem value="#{msg.menuProduto}" icon="ui-icon-document" url="produto.xhtml" />
+		<p:menuitem value="#{msg.menuPedido}" icon="ui-icon-pencil" url="pedido.xhtml" />
+        <p:menuitem value="#{msg.menuLogout}" icon="ui-icon-close" action="#{loginController.efetuarLogout}" />
+		
 	</p:menubar>
  
-</ui:composition>
-</html> 
+</h:form> 
+</body>
+
+</html>

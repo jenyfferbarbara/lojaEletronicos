@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -54,6 +55,15 @@ public class Pedido implements Serializable {
 	@Column(name="status", nullable = false)
 	private String status;
 
+	@Transient
+	private Long qtdProduto;
+	
+	public Pedido() {
+		this.produto = new Produto();
+		this.cliente = new Usuario();
+		this.status = "PENDENTE";
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -100,5 +110,13 @@ public class Pedido implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Long getQtdProduto() {
+		return qtdProduto;
+	}
+
+	public void setQtdProduto(Long qtdProduto) {
+		this.qtdProduto = qtdProduto;
 	}
 }

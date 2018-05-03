@@ -8,5 +8,6 @@ public interface UsuarioService {
 	public Usuario efetuarLogin(LoginModel loginModel);
 
 	void salvarUsuario(Usuario usuario);
-	
+
+	void validarUsuarioLogado(String loginUsuarioLogado) throws Exception;
 }

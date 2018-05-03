@@ -31,17 +31,20 @@ public class LoginController implements Serializable {
 
 		if (usuario != null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.getExternalContext().getSessionMap().put("usuarioAutenticado", usuario);
+			facesContext.getExternalContext().getSessionMap().put("usuarioAutenticado", usuario.getLogin());
+
 			return "sistema/home?faces-redirect=true";
-			//FacesContext.getCurrentInstance().addMessage(null,
-				//	new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso Login", null));
-			//return null;
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Login", null));
-			// Uteis.Mensagem("Não foi possível efetuar o login com esse usuário e senha!");
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Não foi possível efetuar o Login.", null));
 			return "";
 		}
+	}
+	
+	public String efetuarLogout() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().getSessionMap().put("usuarioAutenticado", null);
+		return "/index?faces-redirect=true";
 	}
 
 	public LoginModel getLoginModel() {

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<h:head>
+	<title><h:outputText value="#{msg.tituloPagina}" /></title>
+</h:head>
+
+<body>
+	<h3>
+		<h:outputText value="#{msg.cabecalhoProduto}" />
+	</h3>
+ 
+ 	<h:form id="form">
+		<p:messages id="messages" showDetail="false" closable="true" />
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="txt-codigo" value="#{msg.codigo}" />
+				<p:inputText id="txt-codigo" required="true" value="#{produtoController.produto.codigo}" />
+
+				<p:outputLabel for="txt-descricao" value="#{msg.descricao}" />
+				<p:inputText id="txt-descricao" required="true" value="#{produtoController.produto.descricao}" />
+									
+				<p:outputLabel for="txt-valor" value="#{msg.valor}" />
+				<p:inputText id="txt-valor" required="true" value="#{produtoController.produto.valor}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" cellpadding="20">
+	           	<p:commandButton id="btn-cadastrarProduto"
+					value="#{msg.btnCadastrar}" action="#{produtoController.salvar}"
+						update="messages, txt-codigo, txt-descricao, txt-valor" />
+						
+				<p:commandButton id="btn-cancelarProduto" immediate="true"
+					value="#{msg.btnCancelar}" action="#{produtoController.cancelar}"
+						update="messages" />
+			</h:panelGrid>
+	</h:form> 
+</body>
+
+</html>

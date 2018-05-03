@@ -14,10 +14,6 @@
 </h:head>
 
 <body>
-	<h3>
-		<h:outputText value="#{msg.welcomeHeading}" />
-	</h3>
-
 	<h:form id="form">
 		<p:messages id="messages" showDetail="false" closable="true" />
 
@@ -38,7 +34,7 @@
 	            		&nbsp;
 	            		
 	            	<p:commandButton id="btn-entrar" icon="ui-icon-gear"
-						value="#{msg.entrar}" action="#{loginController.efetuarLogin}"
+						value="#{msg.btnEntrar}" action="#{loginController.efetuarLogin}"
 						update="messages, panel-login" />
 				</h:panelGrid>
 			</h:panelGrid>
