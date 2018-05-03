@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<h:head>
+	<title><h:outputText value="#{msg.tituloPagina}" /></title>
+</h:head>
+
+<body>
+	<h3>
+		<h:outputText value="" />
+	</h3>
+ 
+ 	<h:form id="form">
+		<p:messages id="messages" showDetail="false" closable="true" />
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="txt-login" value="Login" />
+				<p:inputText id="txt-login" required="true" value="#{usuarioController.usuario.login}" />
+
+				<p:outputLabel for="txt-senha" value="Senha" />
+				<p:inputText id="txt-senha" required="true" value="#{usuarioController.usuario.senha}" />
+
+				<p:outputLabel for="txt-nome" value="Nome" />
+				<p:inputText id="txt-nome" value="#{usuarioController.usuario.nome}" />
+					
+				<p:outputLabel for="txt-endereco" value="Endereco" />
+				<p:inputText id="txt-endereco" value="#{usuarioController.usuario.endereco}" />
+					
+				<p:outputLabel for="txt-telefone" value="Telefone" />
+				<p:inputText id="txt-telefone" value="#{usuarioController.usuario.telefone}" />
+					
+				<p:outputLabel for="txt-email" value="Email" />
+				<p:inputText id="txt-email" value="#{usuarioController.usuario.email}" />
+			</h:panelGrid>
+
+           	<p:commandButton id="btn-cadastrarUsuario"
+				value="Cadastrar" action="#{usuarioController.salvar}"
+					update="messages" />
+					
+			<p:commandButton id="btn-cancelarUsuario" immediate="true"
+				value="Cancelar" action="#{usuarioController.cancelar}"
+					update="messages" />
+	</h:form>
+ 
+</body>
+</html>
